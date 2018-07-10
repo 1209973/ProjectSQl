@@ -10,7 +10,8 @@ $res_dataBookDetails=$mysqli->query("select * from book LIMIT $offset, $no_of_re
 if( $_SESSION['role']=='Student'){
     $total_rowsB  =  mysqli_num_rows($mysqli->query("SELECT borrow.ISBN,name,Borrow_Date FROM book,borrow WHERE book.isbn=borrow.isbn AND status=0 AND student_id ='{$_SESSION['ID']}'"));
     $total_pagesB = ceil($total_rowsB   / $no_of_records_per_page);
-    $res_dataB = $mysqli->query("select * from student_section WHERE Student_id ='{$_SESSION['ID']}' LIMIT $offset, $no_of_records_per_page");
+    $res_dataB = $mysqli->query("SELECT borrow.ISBN,name,Borrow_Date FROM book,borrow WHERE book.isbn=borrow.isbn AND status=0 AND student_id ='{$_SESSION['ID']}' LIMIT $offset, $no_of_records_per_page");
+
 }
 if( $_SESSION['role']=='Professor'){
 
@@ -22,6 +23,7 @@ if( $_SESSION['role']=='Admin'){
     $total_rowsB = mysqli_num_rows($mysqli->query("SELECT borrow.ISBN,name,Borrow_Date,Return_Date,Student_id FROM book,borrow WHERE book.isbn=borrow.isbn "));
     $total_pagesB = ceil($total_rowsB   / $no_of_records_per_page);
     $res_dataB = $mysqli->query("SELECT borrow.ISBN,name,Borrow_Date,Return_Date,Student_id FROM book,borrow WHERE book.isbn=borrow.isbn  LIMIT $offset, $no_of_records_per_page");
+
 }
 
 if($_SESSION['role']== "Student"){

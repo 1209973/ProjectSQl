@@ -76,6 +76,10 @@ $offset = ($pageno - 1) * $no_of_records_per_page;
                 <h2>DETAILS <?php
 
                     $studentDetails = mysqli_fetch_array($mysqli->query("select * from student WHERE Student_id ='{$_SESSION['ID']}'"));
+                     if(substr( $studentDetails['Status'], 0, 1 ) === "G"){
+                        $studentDetails = mysqli_fetch_array($mysqli->query("select * from student ,graduate_student WHERE student.Student_id ='{$_SESSION['ID']}' AND graduate_student.Student_id='{$_SESSION['ID']}'"));
+                    }
+
                     echo "<input type=\"button\" name=\"edit\" value=\"Edit\" id=\"$studentDetails[Student_id]\" class=\"btn btn-info btn-sm edit_dataST\" style=\"float: right;\" />";
                     ?></h2>
 
@@ -90,7 +94,7 @@ $offset = ($pageno - 1) * $no_of_records_per_page;
                 <p> Status:<?php echo $studentDetails['Status'];?>  </p>
                 <?php if(substr( $studentDetails['Status'], 0, 1 ) === "G"){
                     echo "<p> Major:".$studentDetails['Major']. "</p>";
-                    echo "<p> Major:".$studentDetails['Thesisopt']. "</p>";
+                    echo "<p> Thesisopt:".$studentDetails['Thesisopt']. "</p>";
                 }
                 ?>
 

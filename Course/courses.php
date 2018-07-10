@@ -9,8 +9,8 @@ $offsetC = ($pagenoC - 1) * $no_of_records_per_page;
 if( $_SESSION['role']=='Student'){
     $total_rowsC  =  mysqli_num_rows($mysqli->query("SELECT course_id,course_name,credit_hours,name FROM course,department WHERE course.department_code=department.department_code"));
     $total_pagesC = ceil($total_rowsC   / $no_of_records_per_page);
-    $res_dataEC = $mysqli->query("SELECT Course_id,Course_name,Credit_hours,Prerequisites_code,College,Department_code FROM course,student_section WHERE student_section.course_code=course.course_id AND student_id='{$_SESSION['ID']}'");
-    $res_dataC =$mysqli->query("SELECT Course_id,Course_name,Credit_hours,Prerequisites_code,College,name FROM course,department WHERE course.department_code=department.department_code LIMIT $offset, $no_of_records_per_page");
+    $res_dataEC = $mysqli->query("SELECT Course_id,Course_name,Credit_hours,Prerequisite_code,College,Department_code FROM course,student_section WHERE student_section.course_code=course.course_id AND student_id='{$_SESSION['ID']}'");
+    $res_dataC =$mysqli->query("SELECT Course_id,Course_name,Credit_hours,Prerequisite_code,College,name FROM course,department WHERE course.department_code=department.department_code LIMIT $offset, $no_of_records_per_page");
 }
 if( $_SESSION['role']=='Professor'){
 
@@ -21,8 +21,8 @@ if( $_SESSION['role']=='Professor'){
 if( $_SESSION['role']=='Admin'){
     $total_rowsC  =  mysqli_num_rows($mysqli->query("SELECT course_id,course_name,credit_hours,name FROM course,department WHERE course.department_code=department.department_code"));
     $total_pagesC = ceil($total_rowsC   / $no_of_records_per_page);
-    $res_dataEC = $mysqli->query("SELECT Course_id,Course_name,Credit_hours,Prerequisites_code,College,Department_code FROM course,student_section WHERE student_section.course_code=course.course_id AND student_id='{$_SESSION['ID']}'");
-    $res_dataC =$mysqli->query("SELECT Course_id,Course_name,Credit_hours,Prerequisites_code,College,name FROM course,department WHERE course.department_code=department.department_code LIMIT $offset, $no_of_records_per_page");
+    $res_dataEC = $mysqli->query("SELECT Course_id,Course_name,Credit_hours,Prerequisite_code,College,Department_code FROM course,student_section WHERE student_section.course_code=course.course_id AND student_id='{$_SESSION['ID']}'");
+    $res_dataC =$mysqli->query("SELECT Course_id,Course_name,Credit_hours,Prerequisite_code,College,name FROM course,department WHERE course.department_code=department.department_code LIMIT $offset, $no_of_records_per_page");
 
 }
 ?>
@@ -115,7 +115,7 @@ if( $_SESSION['role']=='Admin'){
                         <td> '. $rowC["Course_id"] . '</td>
                          <td> '. $rowC["Course_name"] .' </td>
                         <td> '. $rowC["Credit_hours"] . '</td>
-                        <td> '. $rowC["Prerequisites_code"] .' </td>
+                        <td> '. $rowC["Prerequisite_code"] .' </td>
                         <td> '. $rowC["College"] . '</td>
                         <td> '. $rowC["name"] . '</td>
                         <td><input type="button" name="view" value="view" id="'. $rowC["Course_id"].'" class="btn btn-info btn-xs view_dataC" /></td>

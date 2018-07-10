@@ -20,7 +20,7 @@ if(!empty($_POST)) {
           }
           else {
         $Department_code = mysqli_real_escape_string($mysqli, $_POST["Department_codePF"]);
-            $query = " INSERT INTO proffessor (Emp_id,Name,Office,Phone,Department_code) VALUES('$Emp_id','$name','$Office','$Phone','$Department_code');";
+            $query = " INSERT INTO proffessor (Emp_id,Name,Office,Phone,Department_code) VALUES('$Emp_id','$name','$Office','$Phone','$Department_code')";
             $message = 'Data Inserted';
 
         }

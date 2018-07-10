@@ -12,7 +12,7 @@
 
     define('DB_PASSWORD', '');
 
-    define('DB_NAME', 'ProjectSQl');
+    define('DB_NAME', 'Project');
 
      
 
